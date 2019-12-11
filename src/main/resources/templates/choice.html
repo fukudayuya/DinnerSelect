@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>今日の夜ご飯結果！</title>
+<style type="text/css">
+h1{
+	text-align: center;
+}
+div{
+	text-align: center;
+}
+button{
+	font-size: 15px;
+	border-radius: 5px;
+	outline: none;
+}
+button:hover{
+	border: 2px solid blue;
+	color: #998bfa;
+	border-radius: 20px;
+	 -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.dinerList{
+	font-size: 50px;
+}
+span{
+	color: blue;
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	console.log("フェードイン");
+	$("div").hide().fadeIn(5500);
+});
+
+</script>
+</head>
+<body>
+<h1>今日の夜ご飯は・・・</h1>
+
+<div th:each="list : ${dinnerList}" class="dinerList">
+	<span th:text="${list.foodname}"></span>にしよう！<br>
+	<img th:src="@{/img/{list}(list=${list.foodpicture})}">
+</div>
+
+<div class="actionbutton">
+	<button type="button" onclick="window.location.reload();">もう一度！</button>
+	<br><button type="button" onclick="history.back()">戻る</button>
+</div>
+
+</body>
+</html>
